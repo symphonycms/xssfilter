@@ -65,7 +65,6 @@
 				$context['messages'][] = array(
 					'xss', FALSE, __("Possible XSS attack detected in submitted data")
 				);
-				print "FAILED";
 			}
 		}
 	

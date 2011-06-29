@@ -136,9 +136,8 @@
 				// Match any attribute starting with "on" or xmlns
 				'#(<[^>]+[\x00-\x20\"\'\/])(on|xmlns)[^>]*>?#iUu',
 
-				// Match javascript: and vbscript: protocols
-				'!javascript:(\w)*!iUu',
-				'!vbscript:!iUu',
+				// Match javascript:, livescript:, vbscript: and mocha: protocols
+				'!((java|live|vb)script|mocha):(\w)*!iUu',
 				'#-moz-binding[\x00-\x20]*:#u',
 
 				// Match style attributes

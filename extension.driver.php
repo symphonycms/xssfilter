@@ -39,7 +39,7 @@
 		public function appendEventFilter(array $context) {
 			$context['options'][] = array(
 				'xss-fail',
-				is_array($context['selected') ? in_array('xss-fail', $context['selected']) : false,
+				is_array($context['selected']) ? in_array('xss-fail', $context['selected']) : false,
 				'Filter XSS: Fail if malicious input is detected'
 			);
 		}

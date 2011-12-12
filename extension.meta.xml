@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension id="xssfilter" status="released" xmlns="http://symphony-cms.com/schemas/extension/1.0">
+	<name>Cross-Site Scripting (XSS) Filter</name>
+	<description>Protect yourself against XSS attacks in form submissions.</description>
+	<repo type="github">https://github.com/nickdunn/strong_author_passwords</repo>
+	<url type="discuss">http://symphony-cms.com/discuss/thread/61174/</url>
+	<types>
+		<type>Event</type>
+		<type>Security</type>
+	</types>
+	<authors>
+		<author>
+			<name github="symphonycms" symphony="team">Symphony Team</name>
+			<website>http://symphony-cms.com</website>
+		</author>
+	</authors>
+	<media>
+		<item type="image" url="http://symphonyextensions.com/nickdunn/strong_author_passwords/media/strong_author_passwords.png">Strong Author Passwords: Enforce strict password rules when creating an author</item>
+	</media>
+	<releases>
+		<release version="1.1" date="2011-05-29" min="2.0.3">
+			- Static `detectXSS` function so that logic can be used by other extensions outside of the Event Options context
+			- Events with the XSS Filter can now handle nested field data to an infinite level
+			- Slight performance tweak if XSS is detected
+			- Additional detection logic adding for `livescript` and `mocha` protocols
+		</release>
+		<release version="1.0" date="2010-10-08" min="2.0.3"/>
+	</releases>
+</extension>

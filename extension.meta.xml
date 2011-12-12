@@ -2,8 +2,7 @@
 <extension id="xssfilter" status="released" xmlns="http://symphony-cms.com/schemas/extension/1.0">
 	<name>Cross-Site Scripting (XSS) Filter</name>
 	<description>Protect yourself against XSS attacks in form submissions.</description>
-	<repo type="github">https://github.com/nickdunn/strong_author_passwords</repo>
-	<url type="discuss">http://symphony-cms.com/discuss/thread/61174/</url>
+	<repo type="github">https://github.com/symphonycms/xssfilter</repo>
 	<types>
 		<type>Event</type>
 		<type>Security</type>

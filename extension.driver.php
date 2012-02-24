@@ -110,7 +110,12 @@
 			$contains_xss = FALSE;
 
 			if(!is_string($string)) {
-				throw new Exception(__('Passed parameter is not a string.'));
+				if(is_numeric($string)) {
+					$string = (string)$string;
+				}
+				else {
+					throw new Exception(__('Passed parameter is not a string.'));
+				}
 			}
 
 			// Keep a copy of the original string before cleaning up

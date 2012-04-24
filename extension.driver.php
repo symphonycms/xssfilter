@@ -109,13 +109,9 @@
 		public static function detectXSS($string) {
 			$contains_xss = FALSE;
 
-			if(!is_string($string)) {
-				if(is_numeric($string)) {
-					$string = (string)$string;
-				}
-				else {
-					throw new Exception(__('Passed parameter is not a string.'));
-				}
+			// Skip any null or non string values
+			if(is_null($string) || !is_string($string)) {
+				return $contains_xss;
 			}
 
 			// Keep a copy of the original string before cleaning up

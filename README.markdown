@@ -1,9 +1,9 @@
 # Cross-Site Scripting (XSS) Filter
 
-- Version: 1.1
+- Version: 1.1.1
 - Author: Symphony Team
-- Build Date: 29th June 2010
-- Requirements: Symphony 2.*
+- Build Date: 21st May 2012
+- Requirements: Symphony 2.0.3
 
 ## Description
 

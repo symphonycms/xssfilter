@@ -5,8 +5,8 @@
 		public function about() {
 			return array(
 				'name' => 'Cross-Site Scripting (XSS) Filter',
-				'version' => '1.1',
-				'release-date' => '2011-06-29',
+				'version' => '1.1.1',
+				'release-date' => '2012-05-21',
 				'author' => array(
 					'name' => 'Symphony Team',
 					'website' => 'http://symphony-cms.com/',

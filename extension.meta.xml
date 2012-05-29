@@ -4,7 +4,7 @@
 	<description>Protect yourself against XSS attacks in form submissions.</description>
 	<repo type="github">https://github.com/symphonycms/xssfilter</repo>
 	<types>
-		<type>Event</type>
+		<type>Events</type>
 		<type>Security</type>
 	</types>
 	<authors>

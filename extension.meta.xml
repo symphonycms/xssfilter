@@ -14,7 +14,7 @@
 		</author>
 	</authors>
 	<releases>
-		<release version="1.1.1" date="2012-05-21" min="2.0.3">
+		<release version="1.1.1" date="2012-05-21" min="2.0.3" max="2.3.x">
 			- More robust checking to handle upload fields and integers
 		</release>
 		<release version="1.1" date="2011-05-29" min="2.0.3">

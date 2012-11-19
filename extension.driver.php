@@ -138,7 +138,7 @@
 				'#(<[^>]+[\x00-\x20\"\'\/])(on|xmlns)[^>]*>?#iUu',
 
 				// Match javascript:, livescript:, vbscript: and mocha: protocols
-				'!((java|live|vb)script|mocha):(\w)*!iUu',
+				'!((java|live|vb)script|mocha|feed|data):(\w)*!iUu',
 				'#-moz-binding[\x00-\x20]*:#u',
 
 				// Match style attributes

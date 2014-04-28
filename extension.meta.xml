@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <extension id="xssfilter" status="released" xmlns="http://getsymphony.com/schemas/extension/1.0">
 	<name>Cross-Site Scripting (XSS) Filter</name>
-	<description>Protect yourself against XSS attacks in form submissions.</description>
+	<description>Protect yourself against XSS and XSRF attacks in form submissions.</description>
 	<repo type="github">https://github.com/symphonycms/xssfilter</repo>
 	<types>
 		<type>Events</type>
@@ -14,7 +14,10 @@
 		</author>
 	</authors>
 	<releases>
-		<release version="1.2" date="2013-07-01" min="2.0.3">
+		<release version="1.3" date="2014-04-28" min="2.4">
+			- Update extension to include a Validate XSRF filter
+		</release>
+		<release version="1.2" date="2013-07-01" min="2.0.3" max="2.3.6">
 			- Add Russian translation
 			- Additional detection logic adding for `feed` and `data` protocols
 			- Update all links to **getsymphony.com**

@@ -19,6 +19,11 @@
 		public function getSubscribedDelegates() {
 			return array(
 				array(
+					'page' => '/blueprints/events/',
+					'delegate' => 'AppendEventFilterDocumentation',
+					'callback' => 'appendEventFilterDocumentation'
+				),
+				array(
 					'page' => '/blueprints/events/new/',
 					'delegate' => 'AppendEventFilter',
 					'callback' => 'appendEventFilter'
@@ -36,16 +41,28 @@
 			);
 		}
 
+		public function appendEventFilterDocumentation(array $context) {
+			if(in_array('validate-xsrf', $context['selected'])) {
+				$context['documentation'][] = new XMLElement('p', __('To validate a XSRF token, ensure it is passed in the form.'));
+				$context['documentation'][] = contentAjaxEventDocumentation::processDocumentationCode(Widget::Input('xsrf', '{$cookie-xsrf-token}', 'hidden'));
+			}
+		}
+
 		public function appendEventFilter(array $context) {
 			$context['options'][] = array(
 				'xss-fail',
 				is_array($context['selected']) ? in_array('xss-fail', $context['selected']) : false,
 				'Filter XSS: Fail if malicious input is detected'
 			);
+			$context['options'][] = array(
+				'validate-xsrf',
+				is_array($context['selected']) ? in_array('validate-xsrf', $context['selected']) : false,
+				'Validate XSRF: Ensure request was passed with a XSRF token'
+			);
 		}
 
 		public function eventPreSaveFilter(array $context) {
-			if(!in_array('xss-fail', $context['event']->eParamFILTERS) && !in_array('xss-remove', $context['event']->eParamFILTERS)) return;
+			if(!in_array('xss-fail', $context['event']->eParamFILTERS) && !in_array('validate-xsrf', $context['event']->eParamFILTERS)) return;
 
 			$contains_xss = FALSE;
 
@@ -66,11 +83,20 @@
 				}
 			}
 
-			// "fail" filter
+			// Detect XSS filter
 			if(in_array('xss-fail', $context['event']->eParamFILTERS) && $contains_xss === TRUE) {
 				$context['messages'][] = array(
 					'xss', FALSE, __("Possible XSS attack detected in submitted data")
 				);
+			}
+
+			// Validate XSRF token filter
+			if(in_array('validate-xsrf', $context['event']->eParamFILTERS)) {
+				if(Symphony::Engine()->isXSRFEnabled() && is_session_empty() === false && XSRF::validateRequest(true) === false) {
+					$context['messages'][] = array(
+						'xsrf', FALSE, __("Request was rejected for having an invalid cross-site request forgery token.")
+					);
+				}
 			}
 		}
 

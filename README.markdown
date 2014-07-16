@@ -21,7 +21,7 @@ Protect yourself against XSS and XSRF attacks in form submissions.
 Additionally, the XSS Filter can be used directly in your extensions via `Extension_XSSFilter::detectXSS($string)` which takes a string and returns boolean if XSS is detected.
 
 #### Frontend Utilities
-As of XSS Filter 1.4, this extension provides five context aware functions that can be used on the frontend to filter malicious data. These functions are designed to be used in five areas, attributes (`attributeContextCleaner`), style (`styleContextCleaner`), script (`scriptContextCleaner`), url (`urlContextCleaner`) and html (`htmlContextCleaner`). Thanks to [Ashar Javed](https://twitter.com/soaj1664ashar) for reaching out and sharing his work.
+As of XSS Filter 1.4, this extension provides five context aware functions that can be used on the frontend to filter malicious data. These functions are designed to be used in five areas, attributes (`attributeContextCleaner`), style (`styleContextCleaner`), script (`scriptContextCleaner`), url (`urlContextCleaner`) and html (`htmlContextCleaner`). Thanks to [Ashar Javed](http://www.nds.rub.de/chair/people/JAsh/) ([@soaj1664ashar](https://twitter.com/soaj1664ashar)) for reaching out and sharing his work.
 
 Example usage:
 

@@ -1,20 +1,8 @@
 <?php
 
-	Class Extension_XSSFilter extends Extension {
+	require EXTENSIONS . '/xssfilter/lib/xss.php';
 
-		public function about() {
-			return array(
-				'name' => 'Cross-Site Scripting (XSS) Filter',
-				'version' => '1.2',
-				'release-date' => '2013-07-01',
-				'author' => array(
-					'name' => 'Symphony Team',
-					'website' => 'http://getsymphony.com/',
-					'email' => 'team@getsymphony.com'
-				),
-				'description' => 'Protect yourself against XSS attacks in form submissions.'
-			);
-		}
+	Class Extension_XSSFilter extends Extension {
 
 		public function getSubscribedDelegates() {
 			return array(
@@ -38,6 +26,11 @@
 					'delegate' => 'EventPreSaveFilter',
 					'callback' => 'eventPreSaveFilter'
 				),
+				array(
+					'page' => '/frontend/',
+					'delegate' => 'FrontendParamsResolve',
+					'callback' => 'frontendParamsResolve'
+				)
 			);
 		}
 
@@ -98,6 +91,16 @@
 					);
 				}
 			}
+		}
+
+		public static function FrontendParamsResolve(array &$context) {
+			Frontend::Page()->registerPHPFunction(array(
+				'htmlContextCleaner',
+				'scriptContextCleaner',
+				'attributeContextCleaner',
+				'styleContextCleaner',
+				'urlContextCleaner'
+			));
 		}
 
 		/**

@@ -65,7 +65,7 @@
      * @demo http://xssplaygroundforfunandlearn.netai.net/final.html
      */
     function attributeContextCleaner($input) {
-        $bad_chars = array("\"", "'",  "``");
+        $bad_chars = array("\"", "'",  "`");
 
         $safe_chars = array("&quot;", "&apos;", "&grave;");
 

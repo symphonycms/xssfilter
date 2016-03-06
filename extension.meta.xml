@@ -10,10 +10,13 @@
 	<authors>
 		<author>
 			<name github="symphonycms" symphony="team">Symphony Team</name>
-			<website>http://getsymphony.com</website>
+			<website>http://getsymphony.com/</website>
 		</author>
 	</authors>
 	<releases>
+		<release version="1.4.2" date="2016-03-06" min="2.4" max="2.x.x">
+			- Updated compatibility info
+		</release>
 		<release version="1.4.1" date="2015-02-08" min="2.4">
 			- Small patch to the attribute context cleaner
 		</release>

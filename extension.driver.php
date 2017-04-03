@@ -150,7 +150,12 @@
 			$string = urldecode($string);
 
 			// Convert Hexadecimals
-			$string = preg_replace('!(&#|\\\)[xX]([0-9a-fA-F]+);?!e','chr(hexdec("$2"))', $string);
+			$string = preg_replace_callback('!(&#|\\\)[xX]([0-9a-fA-F]+);?!',
+        function($m) {return chr(hexdec($m[2]));},
+        $string
+			);
+			
+			
 
 			// Clean up entities
 			$string = preg_replace('!(&#0+[0-9]+)!','$1;',$string);

@@ -14,6 +14,10 @@
 		</author>
 	</authors>
 	<releases>
+		<release version="1.5.0" date="2017-04-05" min="2.4" max="2.x.x">
+			- Replaced deprecated preg_replace /e in extension.driver.php
+			- Added German translation
+		</release>
 		<release version="1.4.2" date="2016-03-06" min="2.4" max="2.x.x">
 			- Updated compatibility info
 		</release>

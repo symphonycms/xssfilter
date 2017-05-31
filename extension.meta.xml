@@ -14,6 +14,9 @@
 		</author>
 	</authors>
 	<releases>
+		<release version="1.5.1" date="2017-05-31" min="2.4.x" max="4.x.x">
+			- PHP7 Compatibility
+		</release>
 		<release version="1.5.0" date="2017-04-05" min="2.4" max="2.x.x">
 			- Replaced deprecated preg_replace /e in extension.driver.php
 			- Added German translation

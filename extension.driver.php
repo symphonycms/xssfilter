@@ -57,29 +57,29 @@
 		public function eventPreSaveFilter(array $context) {
 			if(!in_array('xss-fail', $context['event']->eParamFILTERS) && !in_array('validate-xsrf', $context['event']->eParamFILTERS)) return;
 
-			$contains_xss = FALSE;
+			$contains_xss = false;
 
 			// Loop over the fields to check for XSS, this loop will
 			// break as soon as XSS is detected
 			foreach($context['fields'] as $field => $value) {
 				if(is_array($value)) {
-					if(self::detectXSSInArray($value) === FALSE) continue;
+					if(self::detectXSSInArray($value) === false) continue;
 
-					$contains_xss = TRUE;
+					$contains_xss = true;
 					break;
 				}
 				else {
-					if(self::detectXSS($value) === FALSE) continue;
+					if(self::detectXSS($value) === false) continue;
 
-					$contains_xss = TRUE;
+					$contains_xss = true;
 					break;
 				}
 			}
 
 			// Detect XSS filter
-			if(in_array('xss-fail', $context['event']->eParamFILTERS) && $contains_xss === TRUE) {
+			if(in_array('xss-fail', $context['event']->eParamFILTERS) && $contains_xss === true) {
 				$context['messages'][] = array(
-					'xss', FALSE, __("Possible XSS attack detected in submitted data")
+					'xss', false, __("Possible XSS attack detected in submitted data")
 				);
 			}
 
@@ -87,7 +87,7 @@
 			if(in_array('validate-xsrf', $context['event']->eParamFILTERS)) {
 				if(Symphony::Engine()->isXSRFEnabled() && is_session_empty() === false && XSRF::validateRequest(true) === false) {
 					$context['messages'][] = array(
-						'xsrf', FALSE, __("Request was rejected for having an invalid cross-site request forgery token.")
+						'xsrf', false, __("Request was rejected for having an invalid cross-site request forgery token.")
 					);
 				}
 			}
@@ -119,11 +119,11 @@
 					return self::detectXSSInArray($value);
 				}
 				else {
-					if(self::detectXSS($value) === TRUE) return TRUE;
+					if(self::detectXSS($value) === true) return true;
 				}
 			}
 
-			return FALSE;
+			return false;
 		}
 
 		/**
@@ -136,7 +136,7 @@
 		 *  True if the given `$string` contains XSS, false otherwise.
 		 */
 		public static function detectXSS($string) {
-			$contains_xss = FALSE;
+			$contains_xss = false;
 
 			// Skip any null or non string values
 			if(is_null($string) || !is_string($string)) {
@@ -182,12 +182,12 @@
 			foreach($patterns as $pattern) {
 				// Test both the original string and clean string
 				if(preg_match($pattern, $string) || preg_match($pattern, $orig)){
-					$contains_xss = TRUE;
+					$contains_xss = true;
 				}
-				if ($contains_xss === TRUE) return TRUE;
+				if ($contains_xss === true) return true;
 			}
 
-			return FALSE;
+			return false;
 		}
 
 	}

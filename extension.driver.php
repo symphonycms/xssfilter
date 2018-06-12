@@ -94,7 +94,7 @@
 		}
 
 		public static function FrontendParamsResolve(array &$context) {
-			Frontend::Page()->registerPHPFunction(array(
+			Frontend::Page()->Proc->registerPHPFunction(array(
 				'htmlContextCleaner',
 				'scriptContextCleaner',
 				'attributeContextCleaner',
